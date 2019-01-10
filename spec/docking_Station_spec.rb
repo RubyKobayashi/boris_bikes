@@ -16,6 +16,11 @@ describe DockingStation do
     subject.dock(pointer)
     expect(subject.bikes).to include(pointer)
   end
+
+ it "doesn't release bike when empty" do
+   expect(subject.bikes).to be_empty
+   expect { subject.release_bike }.to raise_error
+end
 end
 
 

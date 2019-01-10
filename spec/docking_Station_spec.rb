@@ -25,7 +25,17 @@ describe DockingStation do
  it "doesn't release bike when empty. Works on assumption dock is empty at initialization" do
    expect(subject.bikes).to be_empty
    expect { subject.release_bike }.to raise_error
-end
+ end
+
+ it { is_expected.to respond_to(:capacity) }
+
+
+ it "raises an error when docked at full capacity" do
+    needed_bikes = subject.capacity - subject.bikes.length
+    needed_bikes.times{subject.dock(Bike.new)}
+    expect { subject.dock(Bike.new)}.to raise_error
+
+ end
 end
 
 

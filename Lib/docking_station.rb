@@ -17,7 +17,7 @@ class DockingStation
   end
 
   def dock(bike)
-    @bikes.push(bike) unless ( @bikes.length == @capacity )
-    raise "At full capacity" if ( @bikes.length == @capacity )
+    raise "At full capacity" if @bikes.length == @capacity
+    @bikes.push(bike) unless @bikes.length == @capacity
   end
 end

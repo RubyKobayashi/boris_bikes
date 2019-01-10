@@ -12,7 +12,9 @@ describe DockingStation do
   it { is_expected.to respond_to(:bikes)}
   it { is_expected.to respond_to(:dock).with(1).arguments }
   it "docs bike" do
-
+    pointer = Bike.new
+    subject.dock(pointer)
+    expect(subject.bikes).to include(pointer)
   end
 end
 
